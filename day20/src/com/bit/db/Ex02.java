@@ -36,9 +36,19 @@ public class Ex02 {
 			return false;
 		return true;
 	}
+	
+	public static boolean same(int result, int target) {
+		if(result == target) return true;
+		return false;
+	}
+	
+	public static boolean equals(Object result, Object target) {
+		if(result.equals(target)) return true;
+		return false;
+	}
 
 	public static void main(String[] args) {
-		log.setLevel(Level.SEVERE);
+		log.setLevel(Level.INFO);
 
 		Scanner sc = new Scanner(System.in);
 		String input = null;
@@ -50,7 +60,7 @@ public class Ex02 {
 				break;
 			if (input.equals("1")) {
 				System.out.println("-----------------------------");
-				System.out.println("deptno\t|dname\t|loc");
+				System.out.println("deptno\t|dname\t\t|loc");
 				System.out.println("==============================");
 				Connection conn = getConnection();
 				Statement stmt = null;
@@ -71,6 +81,32 @@ public class Ex02 {
 						if (rs != null) rs.close();
 						if (stmt != null) stmt.close();
 						if (conn != null) conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			} else if(input.equals("2")) {
+				System.out.print("detpno>");
+				input = "insert into dept values (" + sc.nextLine();
+				System.out.print("dname>");
+				input += ", '" + sc.nextLine();
+				System.out.print("loc>");
+				input += "', '" + sc.nextLine() + "')";
+				
+				log.info(input);
+				Connection conn = null;
+				Statement stmt = null;
+				
+				try {
+					conn = getConnection();
+					stmt = conn.createStatement();
+					stmt.executeUpdate(input);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if(stmt != null) stmt.close();
+						if(conn != null) conn.close();
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
