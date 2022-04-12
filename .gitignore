@@ -4,6 +4,7 @@
 
 ### Eclipse ###
 .metadata
+dummy.txt
 bin/
 tmp/
 *.tmp
