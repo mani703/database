@@ -51,7 +51,7 @@ public class Ex02 {
 			if (input.equals("1")) {
 				System.out.println("-----------------------------");
 				System.out.println("deptno\t|dname\t|loc");
-				System.out.println("=============================");
+				System.out.println("==============================");
 				Connection conn = getConnection();
 				Statement stmt = null;
 				ResultSet rs = null;
@@ -62,7 +62,7 @@ public class Ex02 {
 						System.out.print(rs.getString(1) + "\t|");
 						System.out.print(rs.getString(2) + "\t|");
 						System.out.println(rs.getString(3));
-						System.out.println("-----------------------------");
+						System.out.println("------------------------------");
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
