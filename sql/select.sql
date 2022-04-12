@@ -49,3 +49,6 @@ select empno, ename from emp where empno<7777 order by empno desc;
 
 -- 두가지 컬럼이 중복이 되는것을 제외
 select distinct deptno, ename from emp; 
+
+-- binary: 문자열 대소문자 구분
+select ename from emp where binary ename like '_A%';
