@@ -8,7 +8,11 @@ import java.net.SocketException;
 public class Receiver {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		byte[] buf = new byte[19];
+=======
+		byte[] buf = new byte[128];
+>>>>>>> refs/remotes/origin/refs/heads/master
 		DatagramSocket sock = null;
 		DatagramPacket packet = null;
 		

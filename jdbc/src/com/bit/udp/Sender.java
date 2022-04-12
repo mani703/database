@@ -22,8 +22,12 @@ public class Sender {
 			dsock.send(packet);
 			
 			String msg2 = "잘받았습니다.";
+<<<<<<< HEAD
 			packet = new DatagramPacket(msg2.getBytes(), msg2.getBytes().length, addr, port);
 			System.out.println(msg2.getBytes().length);
+=======
+			packet = new DatagramPacket(msg2.getBytes(), msg2.length(), addr, port);
+>>>>>>> refs/remotes/origin/refs/heads/master
 			dsock.send(packet);
 			
 		} catch (SocketException e) {
