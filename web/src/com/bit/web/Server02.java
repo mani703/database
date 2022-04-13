@@ -2,6 +2,7 @@ package com.bit.web;
 
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
 
 public class Server02 extends Thread {
 	Socket sock;
@@ -18,15 +19,9 @@ public class Server02 extends Thread {
 			is = sock.getInputStream();
 			isr = new InputStreamReader(is);
 			br = new BufferedReader(isr);
-			
-			while(true){
-				String msg = br.readLine();
-				if(msg == null) break;
-				System.out.println(msg);
-			}
-			br.close();
-			isr.close();
-			is.close();
+			String msg = br.readLine();
+			String[] arr = msg.split(" ");
+			System.out.println(arr[1]);
 			
 			os = sock.getOutputStream();
 			bos = new BufferedOutputStream(os);
@@ -37,18 +32,19 @@ public class Server02 extends Thread {
 			// partition
 			bos.write("\r\n".getBytes());
 			// contents
-			bos.write("<h1>aaaa</h1> <p>bbbb</p>".getBytes());
-//			InputStream is = new FileInputStream(new File("lg_naver.gif"));
-//			while(true) {
-//				int su = is.read();
-//				if(su == -1) break;
-//				bos.write(su);
-//			}
-//			
-//			is.close();
-			
+			if(arr[1].equals("/")) arr[1] = "/index.html";
+			FileInputStream is2 = new FileInputStream("." + new File(arr[1]));
+			while(true) {
+				int su = is2.read();
+				if(su == -1) break;
+				bos.write(su);
+			}
 			bos.flush();
 			
+			is2.close();
+			br.close();
+			isr.close();
+			is.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
