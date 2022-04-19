@@ -97,9 +97,9 @@ public class Test {
 				break;
 			if (input.equals("1")) {
 				String sql = "Select stuid, name, kor, eng, math, truncate((kor+eng+math)/3, 2) from student order by stuid";
-				System.out.println("========================================");
-				System.out.println("학번\t이름\t국어\t영어\t수학");
-				System.out.println("========================================");
+				System.out.println("==============================================");
+				System.out.println("학번\t이름\t국어\t영어\t수학\t평균");
+				System.out.println("==============================================");
 				
 				Connection conn = getConnection();
 				Statement stmt = null;
@@ -115,7 +115,7 @@ public class Test {
 						System.out.print(rs.getString(5) + "\t");
 						System.out.println(rs.getString(6));
 					}
-					System.out.println("========================================");
+					System.out.println("==============================================");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} finally {
